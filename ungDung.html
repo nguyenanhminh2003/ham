@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        td {
+            width: 150px;
+        }
+    </style>
+</head>
+<body>
+<input id ='txt'>
+<button onclick="create()">Add</button>
+<table id="list">
+
+</table>
+<script>
+    let listProduct = ['ip13', 's18', 'x18', 'ip12', 'm20'];
+    display();
+
+
+    function create(){
+        let product = document.getElementById('txt').value;
+        listProduct.push(product);
+        console.log(listProduct);
+        display();
+    }
+    function display(){
+        let str = '<tr><td>Product Name</td><td></td></td><td>' + listProduct.length + ' products</td></tr>'
+        for(let i=0; i< listProduct.length; i++){
+            str += `<tr>`;
+            str += `<td>${listProduct[i]}</td>`;
+            str += `<td><button>edit</button></td>`;
+            str += `<td><button>delete</button></td>`;
+            str += `<tr>`;
+        }
+        document.getElementById('list').innerHTML = str;
+    }
+    function showEdit(index) {
+        let str = `<input id="ted" value="${list[index]}"><button onclick="save(${index})">Save</button>`
+        document.getElementById('from').innerHTML = str;
+    }
+
+    function save(index) {
+        let newL = document.getElementById('ted').value;
+        list[index] = newL;
+        display();
+        document.getElementById('from').innerHTML = ''
+    }
+</script>
+</body>
+</html>
